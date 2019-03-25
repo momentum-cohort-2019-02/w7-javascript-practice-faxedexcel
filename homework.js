@@ -134,3 +134,36 @@ function minimum(array) {
 // Note 2: Selection sort can be implemented using one array. Read the explanation at
 // https://courses.cs.vt.edu/csonline/Algorithms/Lessons/SelectionSort/index.html
 // to see how. This may make more sense to you.
+function selectionSort(array) {
+    if (array.length < 1) {
+        return [];
+    } else if (array.length === 1) {
+        return array;
+    } 
+    
+    function isSorted(someArray) {
+        for (let i = 1; i < someArray.length; i++) {
+            if (someArray[i] < someArray[i - 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    if (isSorted(array)) {
+        return array;
+    } else {
+        const arrayCopy = array.slice(0);
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
+        let sortedArray = []
+        while (arrayCopy.length > 0) {
+            let minIndex = arrayCopy.indexOf(minimum(arrayCopy));
+                // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf
+            let min = arrayCopy.splice(minIndex, 1);
+                // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+            sortedArray.push(min[0]);
+                // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
+        }
+        return sortedArray;
+    }
+}
