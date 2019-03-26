@@ -135,22 +135,7 @@ function minimum(array) {
 // https://courses.cs.vt.edu/csonline/Algorithms/Lessons/SelectionSort/index.html
 // to see how. This may make more sense to you.
 function selectionSort(array) {
-    if (array.length < 1) {
-        return [];
-    } else if (array.length === 1) {
-        return array;
-    } 
-    
-    function isSorted(someArray) {
-        for (let i = 1; i < someArray.length; i++) {
-            if (someArray[i] < someArray[i - 1]) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    if (isSorted(array)) {
+    if (array.length <= 1) {
         return array;
     } else {
         const arrayCopy = array.slice(0);
@@ -167,3 +152,8 @@ function selectionSort(array) {
         return sortedArray;
     }
 }
+// returns an empty array for an empty array 
+// returns the same array for an array with one number 
+// returns the same array for a sorted array 
+    // this one is confusing, I returned sortedArray (a different array) and yet it still passes the test
+// returns a sorted array
